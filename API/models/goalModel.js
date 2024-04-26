@@ -11,14 +11,10 @@ const goalSchema = new mongoose.Schema({
         required: [true, "Please Enter Your Swimming Time Goal"],
         min: [0, "Time cannot be negative"]
     },
-    achiveTime: {
+    caloriesburned: {
         type: Number,
         default: null,
         min: [0, "Time cannot be negative"]
-    },
-    status: {
-        type: String,
-        default: null,
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,

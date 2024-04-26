@@ -122,4 +122,27 @@ userSchema.statics.getUserById = async function(userId) {
     }
 };
 
+// Add a custom method to check password
+userSchema.statics.checkPassword = async function(email, password) {
+    try {
+        // Find the user by email
+        const user = await this.findOne({ email }).select('+password');
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        // Compare the provided password with the hashed password
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            throw new Error('Incorrect password');
+        }
+
+        // Return the user if password is correct
+        return user;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
 module.exports = mongoose.model("User", userSchema);

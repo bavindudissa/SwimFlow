@@ -4,11 +4,12 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 // Create Goal
 exports.createGoal = catchAsyncErrors(async (req, res, next) => {
-    const { swimmingDistance, swimmingTime, userId } = req.body;
+    const { swimmingDistance, swimmingTime, caloriesburned, userId } = req.body;
 
     const goalData = {
         swimmingDistance,
         swimmingTime,
+        caloriesburned,
         userId
     };
 

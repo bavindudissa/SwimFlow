@@ -20,8 +20,12 @@ app.use(cors());
 
 // Route Imports
 const user = require("./controllers/userController");
+const goal = require("./controllers/goalController");
+const explorer = require("./controllers/explorerController");
 
 app.use("/api/v1", user);
+app.use("/api/v1", goal);
+app.use("/api/v1", explorer);
 
 
 // Middleware for Errors

@@ -106,3 +106,21 @@ exports.getUserById = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHander("Unable to fetch user", 400));
     }
 });
+
+// Compare Password
+exports.checkPassword = catchAsyncErrors(async (req, res, next) => {
+    const { email, password } = req.body;
+
+   // try {
+        const user = await User.checkPassword(email, password);
+        if (!user) {
+            return next(new ErrorHander("Password not match", 404));
+        }
+        res.status(200).json({
+            success: true,
+            data: user,
+        });
+  //  } catch (error) {
+  //      return next(new ErrorHander("Unable to fetch user", 400));
+  //  }
+});
