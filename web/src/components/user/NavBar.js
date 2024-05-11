@@ -24,6 +24,10 @@ function NavBar() {
                 console.error('Error logging out:', error);
             });
     };
+
+    const userName = localStorage.getItem('userName');
+
+
   return (
     <div>
         <nav className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
@@ -37,10 +41,19 @@ function NavBar() {
                     <a className="nav-link active" aria-current="page" href="javascript:void(0)">Home</a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/user/explorer">Explorer</a>
+                    <a className="nav-link active" aria-current="page" href="/user/explorer">Explore</a>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="/user/progress">Progress</a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Social Interactions</a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Swimming Pools Near me !</a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">AI Virtual Chatbot</a>
                     </li>
                 </ul>
             </div>
@@ -54,7 +67,7 @@ function NavBar() {
             <li className="nav-item navbar-dropdown dropdown-user dropdown">
                 <a className="nav-link dropdown-toggle hide-arrow show" href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="true">
                 <div className="avatar avatar-online">
-                    <img src="../assets/img/avatars/1.png" alt className="w-px-40 h-auto rounded-circle" />
+                    <img src="../assets/img/avatars/user.png" alt className="w-px-40 h-auto rounded-circle" />
                 </div>
                 </a>
                 <ul className="dropdown-menu dropdown-menu-end show" data-bs-popper="static">
@@ -63,11 +76,11 @@ function NavBar() {
                     <div className="d-flex">
                         <div className="flex-shrink-0 me-3">
                         <div className="avatar avatar-online">
-                            <img src="../assets/img/avatars/1.png" alt className="w-px-40 h-auto rounded-circle" />
+                            <img src="../assets/img/avatars/user.png" alt className="w-px-40 h-auto rounded-circle" />
                         </div>
                         </div>
                         <div className="flex-grow-1">
-                        <span className="fw-medium d-block">John Doe</span>
+                        <span className="fw-medium d-block">{userName}</span>
                         </div>
                     </div>
                     </a>
@@ -82,19 +95,13 @@ function NavBar() {
                     </a>
                 </li>
                 <li>
-                    <a className="dropdown-item" href="#">
-                    <i className="bx bx-cog me-2" />
-                    <span className="align-middle">Settings</span>
-                    </a>
-                </li>
-                <li>
                     <div className="dropdown-divider" />
                 </li>
                 <li>
-                    <a className="dropdown-item" onClick={handleLogout}>
+                    <button className="dropdown-item" onClick={handleLogout}>
                     <i className="bx bx-power-off me-2" />
                     <span className="align-middle">Log Out</span>
-                    </a>
+                    </button>
                 </li>
                 </ul>
             </li>

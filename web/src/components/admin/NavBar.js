@@ -25,6 +25,8 @@ function NavBar() {
                 console.error('Error logging out:', error);
             });
     };
+
+    const userName = localStorage.getItem('userName');
   return (
     <div>
         <nav className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
@@ -47,15 +49,15 @@ function NavBar() {
             <li className="nav-item navbar-dropdown dropdown-user dropdown">
                 <a className="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                 <div className="avatar avatar-online">
-                    <img src="../assets/img/avatars/1.png" alt className="w-px-40 h-auto rounded-circle" />
+                    <img src="../assets/img/avatars/user.png" alt className="w-px-40 h-auto rounded-circle" />
                 </div>
                 </a>
                 <ul className="dropdown-menu dropdown-menu-end">
                 <li>
-                    <a className="dropdown-item" onClick={handleLogout}>
+                    <button className="dropdown-item" onClick={handleLogout}>
                     <i className="bx bx-power-off me-2" />
                     <span className="align-middle">Log Out</span>
-                    </a>
+                    </button>
                 </li>
                 </ul>
             </li>
